@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Driver info</h1>
+    <main>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Lap Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ racer.place }}</td>
+                <td>{{ racer.abbr }}</td>
+                <td class="racer.name">{{ racer.name }}</td>
+                <td>{{ racer.car }}</td>
+                <td>{{ racer.time }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+{% endblock %}

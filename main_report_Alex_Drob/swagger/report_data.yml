@@ -1,0 +1,32 @@
+summary: Retrieve a list of racers
+description: Returns a list of all racers with their place, abbreviation, name, car, and time.
+parameters:
+  - in: query
+    name: format
+    schema:
+      type: string
+    required: false
+    description: The format of the response, either 'json' or 'xml'. Default is 'json'.
+responses:
+  200:
+    description: A list of racers
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              place:
+                type: integer
+              abbr:
+                type: string
+              name:
+                type: string
+              car:
+                type: string
+              time:
+                type: string
+      application/xml:
+        schema:
+          type: string

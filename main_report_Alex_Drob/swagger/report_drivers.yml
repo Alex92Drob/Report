@@ -1,0 +1,47 @@
+summary: Retrieve racer details or list of racers
+description: Returns details of a specific racer by their abbreviation or a list of all racers.
+parameters:
+  - in: query
+    name: driver_id
+    type: string
+    required: false
+    description: The abbreviation of the racer.
+  - in: query
+    name: format
+    type: string
+    required: false
+    description: The format of the response, either 'json' or 'xml'. Default is 'json'.
+responses:
+  200:
+    description: Racer details or list of racers
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - type: array
+              items:
+                type: object
+                properties:
+                  abbr:
+                    type: string
+                  name:
+                    type: string
+            - type: array
+              items:
+                type: object
+                properties:
+                  place:
+                    type: integer
+                  abbr:
+                    type: string
+                  name:
+                    type: string
+                  car:
+                    type: string
+                  time:
+                    type: string
+      application/xml:
+        schema:
+          type: string
+  404:
+    description: Driver not found

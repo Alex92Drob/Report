@@ -1,0 +1,40 @@
+{%extends "base.html" %}
+
+{% block title %}Racing Report{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Race Report</h1>
+    <main>
+        <br>
+        <div class="container h2">
+            {{ page_title }}
+        </div>
+        <div class="container">
+            Change sorting order: <a href="{{ url_for('homepage') }}?order=desc">DESC</a> <a href="{{ url_for('homepage') }}?order=asc">ASC</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Lap Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for racer in report %}
+            <tr>
+                <td>{{ racer.place }}</td>
+                <td>{{ racer.abbr }}</td>
+                <td class="racer.name">{{ racer.name }}</td>
+                <td>{{ racer.car }}</td>
+                <td>{{ racer.time }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</div>
+{% endblock %}
