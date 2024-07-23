@@ -9,8 +9,12 @@ class ReportData(Resource):
     @swag_from('swagger/report_data.yml')
     def get(self):
         format_request = request.args.get('format', 'json')
+        order = request.args.get('order', 'asc')
+        report_info = RacingReport
         table = []
-        for racer in RacingReport:
+        if order == 'desc':
+            report_info = RacingReport.select().order_by(-RacingReport.id)
+        for racer in report_info:
             racer_info = {
                 'place': racer.place,
                 'abbr': racer.abbr,
